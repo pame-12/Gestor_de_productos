@@ -4,6 +4,17 @@ using System;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Añadir CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("PermitirTodo", builder =>
+    {
+        builder.AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 // Configura el servicio de MySQL con la versión correcta
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -23,6 +34,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.UseCors("PermitirTodo");
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
