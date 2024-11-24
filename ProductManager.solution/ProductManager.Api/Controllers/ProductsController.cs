@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using ProductManager.Domain.Data;
+using ProductManager.Infrastructure.Context;
 using ProductManager.Domain.Entities;
 using System;
 

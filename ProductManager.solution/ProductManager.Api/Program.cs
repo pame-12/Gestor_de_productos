@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ProductManager.Domain.Data;
+using ProductManager.Infrastructure.Context;
 using System;
 
 var builder = WebApplication.CreateBuilder(args);
